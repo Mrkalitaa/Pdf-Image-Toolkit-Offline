@@ -1,0 +1,191 @@
+<UserControl
+    x:Class="PdfImageToolkit.Views.Pdf.SplitView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:vm="using:PdfImageToolkit.ViewModels.Pdf"
+    mc:Ignorable="d">
+
+    <ScrollViewer Padding="16,8,16,24">
+        <StackPanel Spacing="18" MaxWidth="900" HorizontalAlignment="Left">
+            <!-- Header -->
+            <StackPanel Spacing="4">
+                <TextBlock Text="Split PDF Document" FontSize="22" FontWeight="Bold" />
+                <TextBlock
+                    Text="Extract custom page ranges (e.g. 1-3, 5, 8-10), separate every single page, or divide by every N pages."
+                    FontSize="13"
+                    Foreground="{ThemeResource TextFillColorSecondaryBrush}" />
+            </StackPanel>
+
+            <!-- Drop Zone -->
+            <Border
+                x:Name="DropZone"
+                Background="{ThemeResource CardBackgroundFillColorDefaultBrush}"
+                BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}"
+                BorderThickness="2"
+                CornerRadius="8"
+                Padding="24"
+                AllowDrop="True"
+                DragOver="DropZone_DragOver"
+                Drop="DropZone_Drop">
+                <StackPanel HorizontalAlignment="Center" Spacing="10">
+                    <FontIcon Glyph="&#xE8B9;" FontSize="32" Foreground="{ThemeResource AccentFillColorDefaultBrush}" HorizontalAlignment="Center" />
+                    <TextBlock Text="Drag and drop a PDF file here" FontSize="15" FontWeight="SemiBold" HorizontalAlignment="Center" />
+                    <TextBlock Text="or click below to choose a file" FontSize="12" Foreground="{ThemeResource TextFillColorSecondaryBrush}" HorizontalAlignment="Center" />
+                    <Button
+                        Content="Browse PDF File..."
+                        Command="{x:Bind ViewModel.PickFileCommand}"
+                        HorizontalAlignment="Center"
+                        Margin="0,6,0,0"
+                        AutomationProperties.Name="Browse PDF File to Split" />
+                </StackPanel>
+            </Border>
+
+            <!-- Error Banner -->
+            <InfoBar
+                IsOpen="{x:Bind ViewModel.HasErrorMessage, Mode=OneWay}"
+                Severity="Error"
+                Message="{x:Bind ViewModel.ErrorMessage, Mode=OneWay}"
+                IsClosable="True" />
+
+            <!-- Selected File Card -->
+            <Border
+                Visibility="{x:Bind ViewModel.FileVisibility, Mode=OneWay}"
+                Background="{ThemeResource CardBackgroundFillColorDefaultBrush}"
+                BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}"
+                BorderThickness="1"
+                CornerRadius="8"
+                Padding="16">
+                <Grid ColumnSpacing="12">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <FontIcon Glyph="&#xE8A5;" FontSize="24" VerticalAlignment="Center" Foreground="{ThemeResource AccentFillColorDefaultBrush}" />
+                    <StackPanel Grid.Column="1" VerticalAlignment="Center" Spacing="2">
+                        <TextBlock Text="{x:Bind ViewModel.SelectedFile.FileName, Mode=OneWay}" FontWeight="SemiBold" FontSize="14" />
+                        <TextBlock Text="{x:Bind ViewModel.SelectedFile.DetailText, Mode=OneWay}" FontSize="12" Foreground="{ThemeResource TextFillColorSecondaryBrush}" />
+                    </StackPanel>
+                    <TextBlock Grid.Column="2" Text="{x:Bind ViewModel.SelectedFile.FormattedSize, Mode=OneWay}" FontSize="12" VerticalAlignment="Center" Foreground="{ThemeResource TextFillColorSecondaryBrush}" />
+                    <Button
+                        Grid.Column="3"
+                        Content="Remove"
+                        Command="{x:Bind ViewModel.ClearFileCommand}"
+                        AutomationProperties.Name="Remove Selected File" />
+                </Grid>
+            </Border>
+
+            <!-- Options Panel -->
+            <Border
+                Visibility="{x:Bind ViewModel.FileVisibility, Mode=OneWay}"
+                Background="{ThemeResource CardBackgroundFillColorDefaultBrush}"
+                BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}"
+                BorderThickness="1"
+                CornerRadius="8"
+                Padding="16">
+                <StackPanel Spacing="14">
+                    <TextBlock Text="Split Options" FontWeight="SemiBold" FontSize="15" />
+
+                    <!-- Mode Selector -->
+                    <RadioButtons SelectedIndex="{x:Bind ViewModel.SplitModeIndex, Mode=TwoWay}">
+                        <RadioButton Content="Extract by custom page range (e.g. 1-3, 5, 8-10)" />
+                        <RadioButton Content="Split into individual single-page documents" />
+                        <RadioButton Content="Split into parts of every N pages" />
+                    </RadioButtons>
+
+                    <!-- Range Expression Input (Mode 0) -->
+                    <StackPanel Spacing="6" Visibility="{x:Bind ViewModel.RangeModeVisibility, Mode=OneWay}">
+                        <TextBlock Text="Page Range Expression" FontSize="13" FontWeight="Medium" />
+                        <TextBox
+                            Text="{x:Bind ViewModel.RangeExpression, Mode=TwoWay}"
+                            PlaceholderText="e.g. 1-3, 5, 8-10"
+                            AutomationProperties.Name="Page Range Expression Input" />
+                        <TextBlock
+                            Text="Use commas for separate pages and dashes for ranges. Out-of-order ranges like 5-2 will automatically extract pages 2 through 5."
+                            FontSize="11"
+                            Foreground="{ThemeResource TextFillColorSecondaryBrush}" />
+                    </StackPanel>
+
+                    <!-- N Pages Input (Mode 2) -->
+                    <StackPanel Spacing="6" Visibility="{x:Bind ViewModel.EveryNPagesVisibility, Mode=OneWay}">
+                        <TextBlock Text="Pages Per Split Part" FontSize="13" FontWeight="Medium" />
+                        <NumberBox
+                            Value="{x:Bind ViewModel.PagesPerSplit, Mode=TwoWay}"
+                            Minimum="1"
+                            Maximum="1000"
+                            SpinButtonPlacementMode="Inline"
+                            SmallChange="1"
+                            LargeChange="5"
+                            AutomationProperties.Name="Pages Per Split Part Input" />
+                    </StackPanel>
+                </StackPanel>
+            </Border>
+
+            <!-- Action Panel -->
+            <Grid ColumnSpacing="12" Visibility="{x:Bind ViewModel.FileVisibility, Mode=OneWay}">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <Button
+                    Content="Split PDF"
+                    Style="{ThemeResource AccentButtonStyle}"
+                    Command="{x:Bind ViewModel.ExecuteSplitCommand}"
+                    IsEnabled="{x:Bind ViewModel.CanSplit, Mode=OneWay}"
+                    Padding="28,10,28,10"
+                    FontSize="14"
+                    FontWeight="SemiBold"
+                    AutomationProperties.Name="Split PDF Primary Action" />
+                <Button
+                    Grid.Column="1"
+                    Content="Cancel"
+                    Command="{x:Bind ViewModel.CancelCommand}"
+                    IsEnabled="{x:Bind ViewModel.IsBusy, Mode=OneWay}"
+                    Padding="16,10,16,10"
+                    AutomationProperties.Name="Cancel Split Button" />
+            </Grid>
+
+            <!-- Progress Panel -->
+            <StackPanel Spacing="6" Visibility="{x:Bind ViewModel.BusyVisibility, Mode=OneWay}">
+                <ProgressBar Value="{x:Bind ViewModel.ProgressPercent, Mode=OneWay}" Maximum="100" />
+                <TextBlock Text="{x:Bind ViewModel.StatusText, Mode=OneWay}" FontSize="12" Foreground="{ThemeResource TextFillColorSecondaryBrush}" />
+            </StackPanel>
+
+            <!-- Result Card -->
+            <Border
+                Visibility="{x:Bind ViewModel.ResultVisibility, Mode=OneWay}"
+                Background="{ThemeResource CardBackgroundFillColorDefaultBrush}"
+                BorderBrush="{ThemeResource SystemAccentColor}"
+                BorderThickness="1"
+                CornerRadius="8"
+                Padding="16">
+                <StackPanel Spacing="10">
+                    <StackPanel Orientation="Horizontal" Spacing="8">
+                        <FontIcon Glyph="&#xE73E;" FontSize="18" Foreground="{ThemeResource SystemFillColorSuccessBrush}" />
+                        <TextBlock Text="Split Completed Successfully!" FontWeight="SemiBold" FontSize="15" />
+                    </StackPanel>
+                    <TextBlock
+                        Text="{x:Bind ViewModel.ResultSummaryText, Mode=OneWay}"
+                        FontSize="12"
+                        Foreground="{ThemeResource TextFillColorSecondaryBrush}"
+                        TextWrapping="Wrap" />
+                    <StackPanel Orientation="Horizontal" Spacing="10" Margin="0,6,0,0">
+                        <Button
+                            Visibility="{x:Bind ViewModel.OpenFileButtonVisibility, Mode=OneWay}"
+                            Content="Open File"
+                            Style="{ThemeResource AccentButtonStyle}"
+                            Command="{x:Bind ViewModel.OpenResultFileCommand}"
+                            AutomationProperties.Name="Open Result File Button" />
+                        <Button
+                            Content="Open Folder"
+                            Command="{x:Bind ViewModel.OpenResultFolderCommand}"
+                            AutomationProperties.Name="Open Output Folder Button" />
+                    </StackPanel>
+                </StackPanel>
+            </Border>
+        </StackPanel>
+    </ScrollViewer>
+</UserControl>

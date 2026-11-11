@@ -1,0 +1,34 @@
+<Page
+    x:Class="PdfImageToolkit.Views.ImageToolsView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:viewmodels="using:PdfImageToolkit.ViewModels"
+    mc:Ignorable="d">
+
+    <Grid RowSpacing="12" Padding="24,16,24,24">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <!-- Tool Selection Segment / Tabs -->
+        <NavigationView
+            x:Name="ToolNav"
+            PaneDisplayMode="Top"
+            IsBackButtonVisible="Collapsed"
+            IsSettingsVisible="False"
+            SelectionChanged="ToolNav_SelectionChanged"
+            AutomationProperties.Name="Image Tools Tab Selection">
+            <NavigationView.MenuItems>
+                <NavigationViewItem Content="Compress Images" Tag="Compress" AutomationProperties.Name="Compress Images Tab" />
+                <NavigationViewItem Content="Resize Images" Tag="Resize" AutomationProperties.Name="Resize Images Tab" />
+                <NavigationViewItem Content="Convert Images" Tag="Convert" AutomationProperties.Name="Convert Images Tab" />
+            </NavigationView.MenuItems>
+        </NavigationView>
+
+        <!-- Content Area for Active Image Tool -->
+        <ContentControl x:Name="ActiveToolContent" Grid.Row="1" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" />
+    </Grid>
+</Page>

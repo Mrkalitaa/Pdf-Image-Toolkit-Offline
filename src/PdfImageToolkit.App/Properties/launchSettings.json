@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "PdfImageToolkit.App (Package)": {
+      "commandName": "MsixPackage"
+    },
+    "PdfImageToolkit.App (Unpackaged)": {
+      "commandName": "Project"
+    }
+  }
+}

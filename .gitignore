@@ -1,0 +1,46 @@
+# Build and Output Folders
+[Bb]in/
+[Oo]bj/
+[Aa]pp[Pp]ackages/
+[Bb]uild/
+[Dd]ebug/
+[Rr]elease/
+x64/
+x86/
+ARM64/
+
+# Visual Studio Cache & User Preferences
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+*.ide/
+
+# Package outputs (will be released via GitHub Releases)
+*.msix
+*.appx
+*.msixbundle
+*.appxbundle
+*.cer
+*.pfx
+
+# Exceptions for Store Assets and Documentation
+!StoreSubmissionPackage/02_Logos_and_Icons/*.png
+!StoreSubmissionPackage/03_Store_Screenshots/*.png
+!src/PdfImageToolkit.App/Assets/*.png
+!src/PdfImageToolkit.App/Assets/*.ico
+!src/PdfImageToolkit.App/Properties/PublishProfiles/
+
+# Ignore local standalone testing build folder (will be published to GitHub Releases)
+App/
+StoreSubmissionPackage/01_Binaries_and_Packages/Testing_Standalone_EXE/
+StoreSubmissionPackage/01_Binaries_and_Packages/Upload_Ready_MSIX/*.msix
+StoreSubmissionPackage/01_Binaries_and_Packages/Upload_Ready_MSIX/*.cer
+
+# Logs & Temporary files
+*.log
+Thumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+TestResults/
