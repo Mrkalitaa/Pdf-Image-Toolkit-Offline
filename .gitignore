@@ -1,3 +1,22 @@
+# Ignore all source code and solution files (local only)
+src/
+tests/
+PdfImageToolkit.sln
+LICENSES.md
+
+# Ignore local packages, binaries & certificates
+App/
+StoreSubmissionPackage/
+STORE_LISTING.md
+*.bat
+*.msix
+*.appx
+*.msixbundle
+*.appxbundle
+*.cer
+*.pfx
+*.zip
+
 # Build and Output Folders
 [Bb]in/
 [Oo]bj/
@@ -16,29 +35,6 @@ ARM64/
 *.userosscache
 *.sln.docstates
 *.ide/
-
-# Package outputs & certificates
-*.msix
-*.appx
-*.msixbundle
-*.appxbundle
-*.cer
-*.pfx
-*.zip
-
-# Ignore local standalone folder
-App/
-
-# Ignore local Partner Center submission package & listing notes
-StoreSubmissionPackage/
-STORE_LISTING.md
-*.bat
-
-# Exceptions for repository assets
-!assets/screenshots/*.png
-!src/PdfImageToolkit.App/Assets/*.png
-!src/PdfImageToolkit.App/Assets/*.ico
-!src/PdfImageToolkit.App/Properties/PublishProfiles/
 
 # Logs & Temporary files
 *.log
