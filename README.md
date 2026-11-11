@@ -3,13 +3,13 @@
 [![Platform](https://img.shields.io/badge/Platform-Windows%2010%20%7C%2011-blue?logo=windows)](https://apps.microsoft.com/detail/9N40BWNB2JLQ)
 [![Framework](https://img.shields.io/badge/.NET-8.0-purple?logo=dotnet)](https://dotnet.microsoft.com/)
 [![UI](https://img.shields.io/badge/WinUI-3%20Windows%20App%20SDK-0078D4?logo=windows11)](https://learn.microsoft.com/windows/apps/winui/)
-[![Privacy](https://img.shields.io/badge/Privacy-100%25%20Offline-success)](StoreSubmissionPackage/04_Listing_Metadata_and_Copy/PRIVACY_POLICY.md)
+[![Privacy](https://img.shields.io/badge/Privacy-100%25%20Offline-success)](PRIVACY_POLICY.md)
 [![License](https://img.shields.io/badge/License-MIT%20%2F%20Apache--2.0-orange)](LICENSES.md)
 [![Microsoft Store](https://img.shields.io/badge/Microsoft%20Store-9N40BWNB2JLQ-00a4ef?logo=microsoft)](https://apps.microsoft.com/detail/9N40BWNB2JLQ)
 
 A production-quality, Microsoft Store-ready offline Windows 10/11 desktop application to merge, split, compress, and convert PDFs and images locally with total privacy.
 
-[**Get it on Microsoft Store**](https://apps.microsoft.com/detail/9N40BWNB2JLQ) • [**Download Release**](https://github.com/Mrkalitaa/Pdf-Image-Toolkit-Offline/releases) • [**Privacy Policy**](StoreSubmissionPackage/04_Listing_Metadata_and_Copy/PRIVACY_POLICY.md)
+[**Get it on Microsoft Store**](https://apps.microsoft.com/detail/9N40BWNB2JLQ) • [**Download Release**](https://github.com/Mrkalitaa/Pdf-Image-Toolkit-Offline/releases) • [**Privacy Policy**](PRIVACY_POLICY.md)
 
 ---
 
@@ -17,15 +17,15 @@ A production-quality, Microsoft Store-ready offline Windows 10/11 desktop applic
 
 | Dashboard Overview | PDF Merge & Split |
 | :---: | :---: |
-| ![Dashboard](StoreSubmissionPackage/03_Store_Screenshots/Screenshot_01_Home_Dashboard.png) | ![PDF Merge & Split](StoreSubmissionPackage/03_Store_Screenshots/Screenshot_02_PDF_Merge_and_Split.png) |
+| ![Dashboard](assets/screenshots/Screenshot_01_Home_Dashboard.png) | ![PDF Merge & Split](assets/screenshots/Screenshot_02_PDF_Merge_and_Split.png) |
 
 | Dual-Mode PDF Compression | Batch Image Resize & Compress |
 | :---: | :---: |
-| ![PDF Compression](StoreSubmissionPackage/03_Store_Screenshots/Screenshot_03_PDF_Compression.png) | ![Image Resize](StoreSubmissionPackage/03_Store_Screenshots/Screenshot_04_Image_Compress_and_Resize.png) |
+| ![PDF Compression](assets/screenshots/Screenshot_03_PDF_Compression.png) | ![Image Resize](assets/screenshots/Screenshot_04_Image_Compress_and_Resize.png) |
 
 | Format Conversion (JPG, PNG, WebP, HEIC) | 100% Offline & Privacy First |
 | :---: | :---: |
-| ![Format Conversion](StoreSubmissionPackage/03_Store_Screenshots/Screenshot_05_Image_Format_Conversion.png) | ![Settings & Privacy](StoreSubmissionPackage/03_Store_Screenshots/Screenshot_06_Settings_and_Privacy.png) |
+| ![Format Conversion](assets/screenshots/Screenshot_05_Image_Format_Conversion.png) | ![Settings & Privacy](assets/screenshots/Screenshot_06_Settings_and_Privacy.png) |
 
 ---
 
@@ -60,8 +60,9 @@ A production-quality, Microsoft Store-ready offline Windows 10/11 desktop applic
 PdfImageToolkit/
 ├── PdfImageToolkit.sln                    # Main solution file
 ├── LICENSES.md                           # License documentation for all components
-├── STORE_LISTING.md                      # Microsoft Store copy, keywords, and description
-├── README.md                             # Engineering and Store submission guide
+├── PRIVACY_POLICY.md                     # 100% offline privacy policy
+├── README.md                             # Project documentation and build guide
+├── assets/                               # Application promotional screenshots
 ├── src/
 │   ├── PdfImageToolkit.Core/             # Core domain models, interfaces, and processing engines
 │   │   ├── Models/                       # FileItem, OperationProgress, OperationResult

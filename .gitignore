@@ -17,26 +17,28 @@ ARM64/
 *.sln.docstates
 *.ide/
 
-# Package outputs (will be released via GitHub Releases)
+# Package outputs & certificates
 *.msix
 *.appx
 *.msixbundle
 *.appxbundle
 *.cer
 *.pfx
+*.zip
 
-# Exceptions for Store Assets and Documentation
-!StoreSubmissionPackage/02_Logos_and_Icons/*.png
-!StoreSubmissionPackage/03_Store_Screenshots/*.png
+# Ignore local standalone folder
+App/
+
+# Ignore local Partner Center submission package & listing notes
+StoreSubmissionPackage/
+STORE_LISTING.md
+*.bat
+
+# Exceptions for repository assets
+!assets/screenshots/*.png
 !src/PdfImageToolkit.App/Assets/*.png
 !src/PdfImageToolkit.App/Assets/*.ico
 !src/PdfImageToolkit.App/Properties/PublishProfiles/
-
-# Ignore local standalone testing build folder (will be published to GitHub Releases)
-App/
-StoreSubmissionPackage/01_Binaries_and_Packages/Testing_Standalone_EXE/
-StoreSubmissionPackage/01_Binaries_and_Packages/Upload_Ready_MSIX/*.msix
-StoreSubmissionPackage/01_Binaries_and_Packages/Upload_Ready_MSIX/*.cer
 
 # Logs & Temporary files
 *.log
