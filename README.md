@@ -12,7 +12,7 @@
 
 **A fast, modern, and completely private Windows utility to merge, split, compress, and convert PDFs and images locally on your PC.**
 
-[👉 Get it on the Microsoft Store](https://apps.microsoft.com/detail/9N40BWNB2JLQ) • [Features](#-key-features) • [PDF Tools](#-comprehensive-pdf-tools) • [Image Tools](#-high-performance-image-tools) • [FAQ](#-faq)
+[👉 Get it on the Microsoft Store](https://apps.microsoft.com/detail/9N40BWNB2JLQ) • [Features](#-key-features) • [PDF Tools](#-comprehensive-pdf-tools) • [Image Tools](#-high-performance-image-tools) • [Privacy Policy](PRIVACY_POLICY.md) • [FAQ](#-faq)
 
 </div>
 
@@ -119,6 +119,7 @@ Yes. The application supports batch conversion from Apple HEIC/HEIF to JPG, PNG,
 
 - **Developer:** [MrKalita](https://apps.microsoft.com/detail/9N40BWNB2JLQ)
 - **License:** [MIT License](LICENSE)
+- **Privacy Policy:** [Privacy Policy](PRIVACY_POLICY.md)
 - **Feedback & Issues:** Feel free to open an issue on the [Issues Tab](https://github.com/Mrkalitaa/Pdf-Image-Toolkit-Offline/issues).
 
 ---
