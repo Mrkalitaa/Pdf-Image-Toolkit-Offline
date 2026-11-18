@@ -53,6 +53,10 @@ Perform everyday PDF document and image tasks quickly and safely without uploadi
   - Files never leave your computer.
   - Zero analytics, zero telemetry beacons, zero account sign-ins, and zero ads.
 
+- 💳 **Transparent Free & Pro Tiers:**
+  - **Free Tier:** 5 free document/image operations per day (resets daily at midnight), up to 10 files per batch, and up to 50 MB per file.
+  - **Pro Edition (Optional In-App Purchase):** One-time lifetime unlock for unlimited daily operations, unlimited batch sizes, and unlimited file sizes. Zero recurring subscriptions.
+
 - 📄 **Comprehensive PDF Tools:**
   - **Merge PDFs:** Combine multiple documents into one organized file with drag-and-drop page reordering.
   - **Split PDFs:** Extract custom page ranges (`1-3, 5, 8-10`), extract every single page, or split into equal N-page chunks.
